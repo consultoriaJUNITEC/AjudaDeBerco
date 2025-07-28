@@ -1,0 +1,44 @@
+# https://www.robotstxt.org/robotstxt.html
+# Strict robots.txt - No robots allowed
+# This website prohibits any automated access
+
+User-agent: *
+Disallow: /
+
+# Specifically block common crawlers
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: LinkedInBot
+Disallow: /
+
+User-agent: WhatsApp
+Disallow: /
+
+# Block all other bots
+User-agent: *
+Disallow: /
+Crawl-delay: 86400
+
+# No sitemap provided intentionally

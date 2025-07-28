@@ -1,0 +1,191 @@
+/* Donors table customizations */
+.donors-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  font-size: 0.875rem;
+  table-layout: fixed;
+}
+
+.donors-table th {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+}
+
+.donors-table td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+
+.products-table tbody::-webkit-scrollbar {
+  width: 8px;
+}
+
+.products-table tbody::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.products-table tbody::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.5);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.products-table tbody::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.7);
+}
+
+/* Firefox scrollbar support */
+.products-table tbody {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79, 70, 229, 0.5) rgba(0, 0, 0, 0.2);
+}
+
+/* Column widths */
+.donors-table th:nth-child(1),
+.donors-table td:nth-child(1) {
+  width: 100%;
+}
+
+.donors-table th:nth-child(2),
+.donors-table td:nth-child(2) {
+  width: 280%;
+}
+
+.donors-table th:nth-child(3),
+.donors-table td:nth-child(3) {  
+  width: 100%;
+}
+
+/* Action buttons */
+.donors-table .actions-cell {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.donors-table .actions-cell .action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.donors-table .actions-cell .mobile-menu-button {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.donors-table .actions-cell .mobile-menu {
+  display: none;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+  /* Hide the text in the Actions header on mobile */
+  .donors-table th.actions-header {
+    font-size: 0;
+  }
+  
+  .donors-table th.actions-header::after {
+    content: "";
+    display: block;
+  }
+
+  /* Adjust column widths for mobile */
+  .donors-table th:nth-child(1),
+  .donors-table td:nth-child(1) {
+    width: 95px;
+  }
+  
+  .donors-table th:nth-child(2),
+  .donors-table td:nth-child(2) {
+    width: auto;
+  }
+    .donors-table th:nth-child(3),
+  .donors-table td:nth-child(3) {
+    width: 50px;
+  }
+  
+  /* Mobile actions menu */
+  .donors-table .actions-cell {
+    gap: 0;
+  }
+  
+  .donors-table .actions-cell .action-buttons {
+    display: none;
+  }
+  
+  .donors-table .actions-cell .mobile-menu-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .donors-table .actions-cell .mobile-menu {
+    position: absolute;
+    right: 10px;
+    background-color: #1e293b;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+  
+  .donors-table .actions-cell .mobile-menu.show {
+    display: flex;
+  }
+
+  .donors-table .actions-cell .mobile-menu .icon-button {
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0;
+  }
+  
+  .donors-table .actions-cell .mobile-menu .icon-button i {
+    margin-right: 8px;
+    width: 16px;
+  }
+
+  .admin-btn-primary {
+    padding: 0 6px 0 6px !important;
+  }
+
+  .table-title {
+    overflow: visible;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .donors-table th {
+    padding: 0.5rem;
+  }
+  .donors-table td {
+    padding: 0.5rem;
+  }
+}

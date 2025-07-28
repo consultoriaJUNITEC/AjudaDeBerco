@@ -1,0 +1,267 @@
+.donor-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.donor-form-modal {
+  background-color: #084455;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.donor-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+}
+
+.donor-form-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.7);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-align: left;
+  padding-left: 4px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.form-field input:disabled {
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-btn-primary {
+  background-color: rgba(79, 70, 229, 0.2);
+  border: 1px solid rgba(79, 70, 229, 0.3);
+}
+
+.admin-btn-primary:hover {
+  background-color: rgba(79, 70, 229, 0.4);
+  border-color: rgba(79, 70, 229, 0.5);
+}
+
+.admin-btn-primary:disabled {
+  background-color: rgba(79, 70, 229, 0.1);
+  border-color: rgba(79, 70, 229, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+/* Animation for the form */
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.donor-form-overlay {
+  animation: fadeIn 0.3s ease;
+}
+
+.donor-form-modal {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Overlay Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.overlay-content {
+  background-color: #084455;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Form validation styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: -8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-align: left;
+  padding-left: 7px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.form-group input.error {
+  border-color: #f44336;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.form-group input:disabled {
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: not-allowed;
+}
+
+.form-group .error-text {
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Styles for save messages */
+.save-indicator {
+  display: flex;
+  align-items: center;
+  color: #4bc0c0;
+  margin-right: auto;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: rgba(75, 192, 192, 0.1);
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  color: #4caf50;
+  margin-right: auto;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  color: #f44336;
+  margin-right: auto;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.save-indicator i,
+.success-message i,
+.error-message i {
+  margin-right: 8px;
+}
