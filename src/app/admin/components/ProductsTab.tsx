@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import type { Product } from "../../types/product";
-import { getAllProducts, deleteProduct, getProductById } from "../../api/products";
-import { isAuthenticated, getAuthToken } from "../../api/auth";
-import { PRODUCT_CATEGORIES } from "../../constants/index";
+import type { Product } from "@/types/product";
+import { getAllProducts, deleteProduct, getProductById } from "@/api/products";
+import { isAuthenticated, getAuthToken } from "@/api/auth";
+import { PRODUCT_CATEGORIES } from "@/constants/index";
 import ProductsTabForm from "./ProductsTabForm";
 import ProductMap from "./ProductMap";
 import "./ProductsTab.css";

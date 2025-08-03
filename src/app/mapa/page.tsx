@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import type { Product } from "../../types/product";
-import { getAllProducts, updateProduct } from "../../api/products";
-import { getAuthToken } from "../../api/auth";
+import type { Product } from "@/types/product";
+import { getAllProducts, updateProduct } from "@/api/products";
+import { getAuthToken } from "@/api/auth";
 import { 
   filterProducts, 
   formatProductNameForMarker, 
@@ -11,8 +11,8 @@ import {
   getUnmappedProducts, 
   calculateDistance, 
   clientToCanvasCoordinates 
-} from "../../utils/mapUtils";
-import { ASSETS } from "../../constants/index";
+} from "@/utils/mapUtils";
+import { ASSETS } from "@/constants/index";
 import "./Map.css";
 import "../shared.css";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import type { Donor } from "../../types/donor";
-import { createDonor, updateDonor } from "../../api/donors";
-import { isAuthenticated, getAuthToken } from "../../api/auth";
+import type { Donor } from "@/types/donor";
+import { createDonor, updateDonor } from "@/api/donors";
+import { isAuthenticated, getAuthToken } from "@/api/auth";
 import "./DonorsTabForm.css";
 
 interface DonorsTabFormProps {

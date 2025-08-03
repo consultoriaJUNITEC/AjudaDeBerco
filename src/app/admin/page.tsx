@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { isAuthenticated, isTokenPresent } from "../../api/auth";
+import { isAuthenticated, isTokenPresent } from "@/api/auth";
 import AuthenticationMenu from "./AuthenticationMenu";
 import ProductsTab from "./components/ProductsTab";
 import CartsTab from "./components/CartsTab";

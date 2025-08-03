@@ -7,8 +7,8 @@
 /**
  * Base URLs
  */
-export const API_BASE_URL = 'https://ajudadeberco-949668158306.europe-west1.run.app'
-export const WEBSOCKET_URL = 'wss://ajudadeberco-949668158306.europe-west1.run.app';
+export const API_BASE_URL = '/api'
+export const WEBSOCKET_URL = 'ws://localhost:3000';
 
 
 /**
@@ -49,8 +49,8 @@ export const CART_TYPES = {
  * Auth Endpoints
  */
 export const AUTH_ENDPOINTS = {
-  LOGIN: `${API_BASE_URL}/login`,
-  VERIFY: `${API_BASE_URL}/login`,
+  LOGIN: `${API_BASE_URL}/auth/login`,
+  VERIFY: `${API_BASE_URL}/auth/verify`,
 };
 
 /**
@@ -59,11 +59,11 @@ export const AUTH_ENDPOINTS = {
 export const PRODUCTS_ENDPOINTS = {
   GET_ALL: `${API_BASE_URL}/products`,
   GET_BY_ID: (id: string) => `${API_BASE_URL}/products/${id}`,
-  CREATE: `${API_BASE_URL}/products`,
+  CREATE: `${API_BASE_URL}/products/create`,
   UPDATE: (id: string) => `${API_BASE_URL}/products/${id}`,
   DELETE: (id: string) => `${API_BASE_URL}/products/${id}`,
-  SEARCH_BY_NAME: (name: string) => `${API_BASE_URL}/search/products?name=${name}`,
-  SEARCH_BY_ID: (id: string) => `${API_BASE_URL}/search/products?id=${id}`,
+  SEARCH_BY_NAME: (name: string) => `${API_BASE_URL}/search?q=${name}&type=products`,
+  SEARCH_BY_ID: (id: string) => `${API_BASE_URL}/search?q=${id}&type=products`,
 };
 
 /**
@@ -72,11 +72,11 @@ export const PRODUCTS_ENDPOINTS = {
 export const DONORS_ENDPOINTS = {
   GET_ALL: `${API_BASE_URL}/donors`,
   GET_BY_ID: (id: string) => `${API_BASE_URL}/donors/${id}`,
-  CREATE: `${API_BASE_URL}/donors`,
+  CREATE: `${API_BASE_URL}/donors/create`,
   UPDATE: (id: string) => `${API_BASE_URL}/donors/${id}`,
   DELETE: (id: string) => `${API_BASE_URL}/donors/${id}`,
-  SEARCH_BY_NAME: (name: string) => `${API_BASE_URL}/search/donors?name=${name}`,
-  SEARCH_BY_ID: (id: string) => `${API_BASE_URL}/search/donors?id=${id}`,
+  SEARCH_BY_NAME: (name: string) => `${API_BASE_URL}/search?q=${name}&type=donors`,
+  SEARCH_BY_ID: (id: string) => `${API_BASE_URL}/search?q=${id}&type=donors`,
 };
 
 /**
@@ -86,6 +86,9 @@ export const CARTS_ENDPOINTS = {
   GET_ALL: `${API_BASE_URL}/cars`,
   GET_BY_ID: (id: string) => `${API_BASE_URL}/cars/get?id=${id}`,
   CREATE: `${API_BASE_URL}/cars/create`,
+  ADD_PRODUCT: `${API_BASE_URL}/cars/add-product`,
+  REMOVE_PRODUCT: `${API_BASE_URL}/cars/remove-product`,
+  UPDATE_QUANTITY: `${API_BASE_URL}/cars/update-quantity`,
 };
 
 /**

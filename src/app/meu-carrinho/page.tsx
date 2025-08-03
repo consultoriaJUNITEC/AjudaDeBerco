@@ -3,10 +3,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Trash2, Edit, Copy } from "lucide-react";
-import { ProductInCart } from "../../types/carts";
-import type { Product } from "../../types/product";
-import { getProductById } from "../../api/products";
-import { ASSETS, WEBSOCKET_ENDPOINTS } from "../../constants/index";
+import { ProductInCart } from "@/types/carts";
+import type { Product } from "@/types/product";
+import { getProductById } from "@/api/products";
+import { ASSETS, WEBSOCKET_ENDPOINTS } from "@/constants/index";
 import ExportMenu from "./components/ExportMenu";
 import SearchBar from "./components/SearchBar";
 import ProductMap from "./components/ProductMap";

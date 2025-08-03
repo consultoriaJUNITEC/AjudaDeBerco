@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import type { Product } from "../../types/product";
-import { createProduct, updateProduct } from "../../api/products";
-import { isAuthenticated, getAuthToken } from "../../api/auth";
-import { PRODUCT_UNITS } from "../../constants/index";
+import type { Product } from "@/types/product";
+import { createProduct, updateProduct } from "@/api/products";
+import { isAuthenticated, getAuthToken } from "@/api/auth";
+import { PRODUCT_UNITS } from "@/constants/index";
 import "./ProductsTabForm.css";
 
 interface ProductsTabFormProps {

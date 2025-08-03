@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { createCar } from "../../api/carts";
-import { isAuthenticated as checkAuthentication, getAuthToken } from "../../api/auth";
+import { createCar } from "@/api/carts";
+import { isAuthenticated as checkAuthentication, getAuthToken } from "@/api/auth";
 import "./NovoCarrinho.css";
 
 const NovoCarrinho: React.FC = () => {

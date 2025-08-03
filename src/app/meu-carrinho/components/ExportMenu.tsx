@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
 import { jsPDF } from "jspdf"
 import autoTable from "jspdf-autotable"
-import type { ProductInCart } from "../../../types/carts"
-import type { Donor } from "../../../types/donor"
-import { searchDonors } from "../../../api/donors"
+import type { ProductInCart } from "@/types/carts"
+import type { Donor } from "@/types/donor"
+import { searchDonors } from "@/api/donors"
 import "./ExportMenu.css"
 
 interface ExportMenuProps {

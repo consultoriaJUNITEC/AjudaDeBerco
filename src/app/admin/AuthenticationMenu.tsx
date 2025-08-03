@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import {
   login,
   setAuthToken,
   isTokenPresent,
   isAuthenticated,
-} from "../../api/auth";
+} from "@/api/auth";
 import "./AuthenticationMenu.css";
 
 interface AuthenticationMenuProps {
@@ -17,7 +17,7 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
   onLoginSuccess,
   onCancel,
 }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -63,7 +63,7 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
       if (onLoginSuccess) {
         onLoginSuccess();
       } else {
-        navigate("/admin"); // Default navigation if no callback is provided
+        router.push("/admin"); // Default navigation if no callback is provided
       }
     } catch (err) {
       console.error("Erro ao autenticar:", err);
@@ -81,7 +81,7 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
     if (onCancel) {
       onCancel();
     } else {
-      navigate("/"); // Default navigation if no callback is provided
+      router.push("/"); // Default navigation if no callback is provided
     }
   };
 
@@ -105,7 +105,7 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
             <button
                type="button"
                className="auth-btn admin-btn-primary"
-               onClick={() => navigate("/admin")}
+               onClick={() => router.push("/admin")}
             >
                Menu Admin&nbsp;&nbsp; <i className="fas fa-arrow-right"></i>
             </button>

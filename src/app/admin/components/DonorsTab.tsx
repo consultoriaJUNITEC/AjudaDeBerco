@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import type { Donor } from "../../types/donor";
-import { getAllDonors, deleteDonor } from "../../api/donors";
-import { isAuthenticated, getAuthToken } from "../../api/auth";
+import type { Donor } from "@/types/donor";
+import { getAllDonors, deleteDonor } from "@/api/donors";
+import { isAuthenticated, getAuthToken } from "@/api/auth";
 import DonorsTabForm from "./DonorsTabForm";
 import "./DonorsTab.css";
 

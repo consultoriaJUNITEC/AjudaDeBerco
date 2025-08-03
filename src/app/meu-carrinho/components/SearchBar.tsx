@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import type { Product } from "../../../types/product";
-import { searchProducts } from "../../../api/products";
+import type { Product } from "@/types/product";
+import { searchProducts } from "@/api/products";
 import "./SearchBar.css";
 
 interface SearchBarProps {

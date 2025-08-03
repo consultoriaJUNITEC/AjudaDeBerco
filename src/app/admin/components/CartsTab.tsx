@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { Folder, Trash2} from "lucide-react";
-import type { Cart } from "../../types/carts";
-import { getAllCarts, getCart } from "../../api/carts";
-import { getAuthToken } from "../../api/auth";
-import { WEBSOCKET_ENDPOINTS, WS_ACTIONS, CART_TYPES } from "../../constants";
+import type { Cart } from "@/types/carts";
+import { getAllCarts, getCart } from "@/api/carts";
+import { getAuthToken } from "@/api/auth";
+import { WEBSOCKET_ENDPOINTS, WS_ACTIONS, CART_TYPES } from "@/constants";
 import "./CartsTab.css";
 import { FolderInput, FolderOutput } from "lucide-react";
 
@@ -52,7 +52,7 @@ const DeleteCartButton: React.FC<{
 };
 
 const CartsTab: React.FC<CartsTabProps> = ({ isActive = true }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [carts, setCarts] = useState<Cart[]>([]);
   const [isLoadingCarts, setIsLoadingCarts] = useState<boolean>(false);
   const [cartError, setCartError] = useState<string | null>(null);
@@ -153,13 +153,7 @@ const CartsTab: React.FC<CartsTabProps> = ({ isActive = true }) => {
     try {      
       const car = await getCart(cartId);
       if (car && car.id) {
-        navigate("/meu-carrinho", { 
-          state: { 
-            cartId: car.id, 
-            cartType: car.type || CART_TYPES.ENTRADA,
-            cartProducts: car.products             
-          } 
-        });
+        router.push(`/meu-carrinho?id=${car.id}&type=${car.type || CART_TYPES.ENTRADA}`);
       } else {
         throw new Error("Não foi possível encontrar o carrinho.");
       }

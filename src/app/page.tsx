@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { useRouter } from "next/navigation";
-import { getCart } from "../api/carts";
+import { getCart } from "@/api/carts";
 import "./shared.css"
 
 const Home: React.FC = () => {

@@ -1,9 +1,9 @@
 import React  from "react";
 import { useState, useEffect, useRef } from "react";
-import type { Product } from "../../types/product";
-import { updateProduct } from "../../api/products";
-import { getAuthToken } from "../../api/auth";
-import { ASSETS } from "../../constants/index"
+import type { Product } from "@/types/product";
+import { updateProduct } from "@/api/products";
+import { getAuthToken } from "@/api/auth";
+import { ASSETS } from "@/constants/index"
 import "./ProductMap.css";
 
 
