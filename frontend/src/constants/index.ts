@@ -7,8 +7,8 @@
 /**
  * Base URLs
  */
-export const API_BASE_URL = 'https://ajudadeberco-949668158306.europe-west1.run.app'
-export const WEBSOCKET_URL = 'wss://ajudadeberco-949668158306.europe-west1.run.app';
+export const API_BASE_URL = 'https://ajudadeberco-157158522558.europe-west1.run.app'
+export const WEBSOCKET_URL = 'wss://ajudadeberco-157158522558.europe-west1.run.app';
 
 
 /**
