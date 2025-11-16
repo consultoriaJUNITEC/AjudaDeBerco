@@ -57,7 +57,6 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
         throw new Error("Por favor, digite uma senha.");
       }
       const result = await login(password);
-      console.log("Login result:", result);
       setAuthToken(result.token);
       if (result.role) {
         setAuthRole(result.role);
