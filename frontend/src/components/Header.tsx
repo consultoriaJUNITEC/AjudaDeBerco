@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import LogoAjudaDeBerco from "./LogoAjudaDeBerco";
 import "./Header.css";
+import { isTokenPresent, getAuthRole } from "../api/auth";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [role, setRole] = useState<string | null>(null);
 
   // Detect scroll to change header style
   useEffect(() => {
@@ -28,6 +31,29 @@ const Header: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
+
+  // Initialize auth state from localStorage and listen to storage/custom events
+  useEffect(() => {
+    const readAuth = () => {
+      setIsLoggedIn(isTokenPresent());
+      setRole(getAuthRole());
+    };
+
+    readAuth();
+
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === null || e.key === "authToken" || e.key === "authRole") {
+        readAuth();
+      }
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("authChanged", readAuth as EventListener);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener("authChanged", readAuth as EventListener);
+    };
+  }, []);
 
   return (
     <header className={`header ${isScrolled ? "header-scrolled" : ""}`}>
@@ -78,14 +104,25 @@ const Header: React.FC = () => {
                 Mapa
               </Link>
             </li>
-            <li>
-              <Link
-                to="/admin"
-                className={location.pathname === "/admin" ? "active" : ""}
-              >
-                Administrador
-              </Link>
-            </li>
+            {/* Show admin link only for admin users. If not logged in, show 'authenticar' linking to login. */}
+            {isLoggedIn ? (
+              role === "admin" ? (
+                <li>
+                  <Link
+                    to="/admin"
+                    className={location.pathname === "/admin" ? "active" : ""}
+                  >
+                    Administrador
+                  </Link>
+                </li>
+              ) : null
+            ) : (
+              <li>
+                <Link to="/login" className={location.pathname === "/login" ? "active" : ""}>
+                  Autenticar
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

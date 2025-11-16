@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { isAuthenticated, isTokenPresent } from "../api/auth";
+import { getAuthRole, isAuthenticated, isTokenPresent } from "../api/auth";
 import AuthenticationMenu from "./AuthenticationMenu";
 import ProductsTab from "../components/adminPanel/ProductsTab";
 import CartsTab from "../components/adminPanel/CartsTab";
@@ -12,6 +12,7 @@ type TabType = "products" | "carts" | "donors";
 const AdminPanel: React.FC = () => {
   const navigate = useNavigate();
   const [authenticated, setAuthenticated] = useState<boolean>(false);
+  const [authRole, setAuthRole] = useState<string | null>(null);
   const [isValidating, setIsValidating] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<TabType>(() => {
     const savedTab = localStorage.getItem('activeAdminTab');
@@ -25,6 +26,10 @@ const AdminPanel: React.FC = () => {
       try {
         const authStatus = await isAuthenticated();
         setAuthenticated(authStatus);
+        if (authStatus) {
+          const role = getAuthRole();
+          setAuthRole(role);
+        }
       } catch (err) {
         console.error("Error validating authentication:", err);
         setAuthenticated(false);
@@ -71,6 +76,11 @@ const AdminPanel: React.FC = () => {
     );
   }
 
+  if (authRole !== "admin") {
+    //reroute to home if not admin
+    navigate("/");
+    return null;
+  }  
   // Render the admin panel if authenticated
   return (
     <div className="container-adminpanel">
