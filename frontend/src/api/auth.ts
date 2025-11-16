@@ -5,7 +5,7 @@ import { AUTH_ENDPOINTS, STORAGE_KEYS } from '../constants';
  * @param password The password for authentication
  * @returns Promise with the authentication result containing the JWT token
  */
-export const login = async (password: string): Promise<{ token: string }> => {
+export const login = async (password: string): Promise<{ token: string; role?: string }> => {
   const response = await fetch(AUTH_ENDPOINTS.LOGIN, {
     method: "POST",
     headers: {
@@ -24,7 +24,7 @@ export const login = async (password: string): Promise<{ token: string }> => {
   }
 
   const data = await response.json();
-  return {token: data.token};
+  return { token: data.token, role: data.role };
 };
 
 /**
@@ -33,6 +33,20 @@ export const login = async (password: string): Promise<{ token: string }> => {
  */
 export const setAuthToken = (token: string): void => {
   localStorage.setItem(STORAGE_KEYS.AUTH_TOKEN, token);
+};
+
+/**
+ * Store the authenticated role in local storage
+ */
+export const setAuthRole = (role: string): void => {
+  localStorage.setItem(STORAGE_KEYS.AUTH_ROLE, role);
+};
+
+/**
+ * Get the authenticated role from local storage
+ */
+export const getAuthRole = (): string | null => {
+  return localStorage.getItem(STORAGE_KEYS.AUTH_ROLE);
 };
 
 /**

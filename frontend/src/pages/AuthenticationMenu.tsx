@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   login,
   setAuthToken,
+  setAuthRole,
   isTokenPresent,
   isAuthenticated,
 } from "../api/auth";
@@ -55,9 +56,12 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
       if (!password.trim()) {
         throw new Error("Por favor, digite uma senha.");
       }
-
       const result = await login(password);
+      console.log("Login result:", result);
       setAuthToken(result.token);
+      if (result.role) {
+        setAuthRole(result.role);
+      }
       setIsLoggedIn(true);
 
       if (onLoginSuccess) {

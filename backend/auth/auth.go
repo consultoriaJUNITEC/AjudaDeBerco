@@ -25,6 +25,7 @@ const (
 
 // Claims represents the data to be encoded in the JWT token
 type Claims struct {
+	Role string `json:"role"`
 	jwt.StandardClaims
 }
 
@@ -35,6 +36,7 @@ type LoginRequest struct {
 type LoginResponse struct {
 	Token     string `json:"token"`
 	ExpiresAt int64  `json:"expires_at"`
+	Role      string `json:"role"`
 }
 
 // Global variables
@@ -112,24 +114,30 @@ func VerifyPasswordDirectly(password string) bool {
 // Authentication functions
 // -----------------------
 
-// AuthenticateUser authenticates using only password
-func AuthenticateUser(password string) error {
-	// Check if the provided password is valid
-	if !VerifyPasswordDirectly(password) {
-		return errors.New("incorrect password")
+// AuthenticateUser authenticates using only password and returns the role used
+func AuthenticateUser(password string) (string, error) {
+	// Check admin password first
+	if CheckPasswordHash(password, adminPasswordHash) {
+		return "admin", nil
 	}
 
-	return nil
+	// Check volunteer password
+	if CheckPasswordHash(password, voluntarioPasswordHash) {
+		return "voluntario", nil
+	}
+
+	return "", errors.New("incorrect password")
 }
 
 // JWT related functions
 // --------------------
 
-// GenerateJWT generates a JWT token
-func GenerateJWT() (string, int64, error) {
+// GenerateJWT generates a JWT token embedding the provided role
+func GenerateJWT(role string) (string, int64, error) {
 	expirationTime := time.Now().Add(tokenDuration)
 
 	claims := &Claims{
+		Role: role,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 			IssuedAt:  time.Now().Unix(),

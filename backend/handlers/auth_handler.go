@@ -36,13 +36,15 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Authenticate using password only
-	if err := auth.AuthenticateUser(loginReq.Password); err != nil {
+	// Authenticate using password only and get role
+	role, err := auth.AuthenticateUser(loginReq.Password)
+	if err != nil {
 		http.Error(w, "Invalid password", http.StatusUnauthorized)
 		return
 	}
-	// Generate JWT token
-	token, expiresAt, err := auth.GenerateJWT()
+
+	// Generate JWT token including role
+	token, expiresAt, err := auth.GenerateJWT(role)
 	if err != nil {
 		http.Error(w, "Error generating token", http.StatusInternalServerError)
 		return
@@ -53,6 +55,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	response := auth.LoginResponse{
 		Token:     token,
 		ExpiresAt: expiresAt,
+		Role:      role,
 	}
 
 	w.Header().Set("Content-Type", "application/json")

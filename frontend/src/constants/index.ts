@@ -121,6 +121,7 @@ export const ASSETS = {
  */
 export const STORAGE_KEYS = {
   AUTH_TOKEN: 'authToken',
+  AUTH_ROLE: 'authRole',
   CURRENT_CART: 'currentCart',
 };
 
