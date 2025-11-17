@@ -61,6 +61,12 @@ const AuthenticationMenu: React.FC<AuthenticationMenuProps> = ({
       if (result.role) {
         setAuthRole(result.role);
       }
+      // Notify same-tab listeners that authentication changed (storage events don't fire in same tab)
+      try {
+        window.dispatchEvent(new Event("authChanged"));
+      } catch (e) {
+        /* ignore if not in browser */
+      }
       setIsLoggedIn(true);
 
       if (onLoginSuccess) {
